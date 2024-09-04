@@ -1,4 +1,4 @@
-import { AddReceiveForm } from "@/components/add-receive-form";
+import { AddRecipeForm } from "@/components/add-receive-form";
 import Link from "next/link";
 
 const MENU = [
@@ -51,7 +51,7 @@ export default function Dashboard({ ...props }: DashboardProps) {
         </ul>
       </nav>
 
-      <AddReceiveForm />
+      <AddRecipeForm />
     </section>
   );
 }

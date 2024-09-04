@@ -14,22 +14,27 @@ import {
   FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "./ui/textarea";
 
 const formSchema = z.object({
   username: z.string().min(8, {
     message: "O nome de usuário deve ter pelo menos 8 caracteres.",
   }),
-  receive_title: z.string().min(3, {
+  recipe_title: z.string().min(3, {
     message: "O título da receita deve ter pelo menos 3 caracteres.",
   }),
+  recipe_ingredients: z.string(),
+  preparation_method: z.string(),
 });
 
-export function AddReceiveForm() {
+export function AddRecipeForm() {
    const form = useForm<z.infer<typeof formSchema>>({
      resolver: zodResolver(formSchema),
      defaultValues: {
        username: "",
-       receive_title: "",
+       recipe_title: "",
+       recipe_ingredients: "",
+       preparation_method: "",
      },
    });
 
@@ -41,6 +46,8 @@ export function AddReceiveForm() {
           {
             method: "POST",
             headers: {
+              "Api-key": "6651a895-151c-4613-9de2-be37434ac8b7",
+              "Accept": "application/json",
               "Content-Type": "application/json",
             },
             body: JSON.stringify(values),
@@ -55,8 +62,6 @@ export function AddReceiveForm() {
       } catch (error) {
         console.error("Erro ao enviar os dados:", error);
       }
-       
-       console.log(values);
      }
 
   return (
@@ -81,12 +86,38 @@ export function AddReceiveForm() {
           />
           <FormField
             control={form.control}
-            name="receive_title"
+            name="recipe_title"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel>Título da receita</FormLabel>
                 <FormControl>
                   <Input placeholder="Ex: Bolo de Fuba" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="recipe_ingredients"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Ingredientes</FormLabel>
+                <FormControl>
+                  <Textarea placeholder={`1 xícara de leite\n2 ovos\n1 xícaras de farinha\n1/2 xícara de Fuba\n1 colher de fermentos\n1 xícaras de açúcar`} {...field} rows={7} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="preparation_method"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Modo de preparação</FormLabel>
+                <FormControl>
+                  <Textarea placeholder={`Mexa tudo até forma passa homogenia\nLeve ao forno por aproximadamente 30 minutos.\nDesligue o fogo e bom apetite! ;)`} {...field} rows={7} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
