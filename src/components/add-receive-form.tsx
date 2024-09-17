@@ -16,6 +16,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "./ui/textarea";
 
+import { toast } from "sonner";
+
+
 const formSchema = z.object({
   username: z.string().min(8, {
     message: "O nome de usuário deve ter pelo menos 8 caracteres.",
@@ -23,11 +26,16 @@ const formSchema = z.object({
   recipe_title: z.string().min(3, {
     message: "O título da receita deve ter pelo menos 3 caracteres.",
   }),
-  recipe_ingredients: z.string(),
-  preparation_method: z.string(),
+  recipe_ingredients: z.string().min(1, {
+    message: "Não se esqueça do ingrediente da receita.",
+  }),
+  preparation_method: z.string().min(1, {
+    message: "Não se esqueça do modo de preparo da receita.",
+  }),
 });
 
 export function AddRecipeForm() {
+
    const form = useForm<z.infer<typeof formSchema>>({
      resolver: zodResolver(formSchema),
      defaultValues: {
@@ -42,12 +50,12 @@ export function AddRecipeForm() {
 
       try {
         const response = await fetch(
-          `https://webhook.site/6651a895-151c-4613-9de2-be37434ac8b7`,
+          `https://webhook.site/3c0b38e8-a544-4eea-9978-9d80d770fc76`,
           {
             method: "POST",
             headers: {
-              "Api-key": "6651a895-151c-4613-9de2-be37434ac8b7",
-              "Accept": "application/json",
+              "Api-key": "3c0b38e8-a544-4eea-9978-9d80d770fc76",
+              Accept: "application/json",
               "Content-Type": "application/json",
             },
             body: JSON.stringify(values),
@@ -55,20 +63,25 @@ export function AddRecipeForm() {
         );
 
         if (response.ok) {
+          toast.success("Dados enviados com sucesso!");
           console.log("Dados enviados com sucesso!");
         } else {
+          
           console.error("Erro ao enviar os dados.");
         }
       } catch (error) {
+        toast.error("Erro ao enviar os dados.");
         console.error("Erro ao enviar os dados:", error);
       }
+
+      form.reset();
      }
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 max-w-screen-sm w-full mx-auto flex flex-col justify-start my-16"
+        className="space-y-8 max-w-screen-sm w-full mx-auto flex flex-col justify-start my-16 px-4 md:px-0"
       >
         <div className="flex justify-start items-center gap-4 flex-col ">
           <FormField
@@ -104,7 +117,11 @@ export function AddRecipeForm() {
               <FormItem className="w-full">
                 <FormLabel>Ingredientes</FormLabel>
                 <FormControl>
-                  <Textarea placeholder={`1 xícara de leite\n2 ovos\n1 xícaras de farinha\n1/2 xícara de Fuba\n1 colher de fermentos\n1 xícaras de açúcar`} {...field} rows={7} />
+                  <Textarea
+                    placeholder={`1 xícara de leite\n2 ovos\n1 xícaras de farinha\n1/2 xícara de Fuba\n1 colher de fermentos\n1 xícaras de açúcar`}
+                    {...field}
+                    rows={7}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -117,7 +134,11 @@ export function AddRecipeForm() {
               <FormItem className="w-full">
                 <FormLabel>Modo de preparação</FormLabel>
                 <FormControl>
-                  <Textarea placeholder={`Mexa tudo até forma passa homogenia\nLeve ao forno por aproximadamente 30 minutos.\nDesligue o fogo e bom apetite! ;)`} {...field} rows={7} />
+                  <Textarea
+                    placeholder={`Mexa tudo até forma passa homogenia\nLeve ao forno por aproximadamente 30 minutos.\nDesligue o fogo e bom apetite! ;)`}
+                    {...field}
+                    rows={7}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
