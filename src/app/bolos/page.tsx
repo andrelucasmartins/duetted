@@ -1,5 +1,5 @@
 interface BolosProps {}
 
 export default function Bolos({ ...props }: BolosProps) {
-  return <section {...props}>Bolos</section>;
+  return <section {...props} className="h-dvh">Bolos</section>;
 }
