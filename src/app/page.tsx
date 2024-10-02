@@ -15,7 +15,7 @@ export default function Home() {
       <div className="flex min-h-screen flex-col justify-between max-w-screen-xl mx-auto">
         <RecipeCarousel />
       </div>
-      <div className="bg-secondary py-8">
+      <div className="bg-secondary py-8 px-8">
         <div className="flex min-h-screen flex-col justify-between max-w-screen-xl mx-auto">
           <h1 className="text-3xl my-8">Receita do dia</h1>
           <Image
@@ -23,7 +23,7 @@ export default function Home() {
             alt="hero"
             width={1000}
             height={500}
-            className="w-full h-[480px] object-cover object-left-top mb-8"
+            className="w-full h-[200px]  md:h-[480px] object-cover object-left-top mb-8 aspect-square md:aspect-auto"
           />
           <pre className="whitespace-pre-line">
             <h1>1. Doce fácil de Beijinho de Coco Ingredientes: </h1>

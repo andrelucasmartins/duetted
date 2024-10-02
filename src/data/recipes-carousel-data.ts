@@ -1,28 +1,34 @@
 export const RECIPES_CAROUSEL_DATA = [
   {
     id: 1,
-    url: "/bolos.png",
-    title: 'Bolo'
+    image: "/bolos.png",
+    title: "Bolos",
+    url: "/bolos",
   },
   {
     id: 2,
-    url: "/doces.png",
-    title: 'Doces'
+    image: "/doces.png",
+    title: 'Doces',
+    url: '/doces'
   },
   {
     id: 3,
-    url: "/salgados.png",
-    title: 'Salgados'
+    image: "/salgados.png",
+    title: 'Salgados',
+    url: '/salgados'
+
   },
   {
     id: 4,
-    url: "/massas.png",
-    title: 'Massas'
+    image: "/massas.png",
+    title: 'Massas',
+    url: '/massas'
   },
   {
     id: 5,
-    url: "/cozidos.webp",
-    title: 'Cozidos'
-  },
+    image: "/cozidos.webp",
+    title: 'Cozidos',
+    url: '/cozidos'
+  }
 
 ]

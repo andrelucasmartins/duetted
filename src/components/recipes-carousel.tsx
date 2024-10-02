@@ -3,6 +3,7 @@
 import { RECIPES_CAROUSEL_DATA } from "@/data/recipes-carousel-data";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { Card, CardContent } from "./ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
@@ -25,11 +26,11 @@ export const RecipeCarousel = ({ ...props }: RecipeCarouselProps) => {
               key={recipe.id}
               className="pl-1 md:basis-1/2 lg:basis-1/4"
             >
-              <div className="p-2">
+              <Link href={recipe.url} className="p-2">
                 <Card className="w-full">
                   <CardContent className="flex aspect-square items-center justify-center  p-0 border-4 border-white rounded">
                     <Image
-                      src={recipe.url}
+                      src={recipe.image}
                       alt="Depoimento"
                       width={300}
                       height={300}
@@ -38,12 +39,12 @@ export const RecipeCarousel = ({ ...props }: RecipeCarouselProps) => {
                   </CardContent>
                 </Card>
                 <p className="uppercase">{recipe.title}</p>
-              </div>
+              </Link>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="bg-primary text-white size-10" />
-        <CarouselNext className="bg-primary text-white size-10" />
+        <CarouselPrevious className="bg-primary text-white size-10 hidden md:flex" />
+        <CarouselNext className="bg-primary text-white size-10 hidden md:flex" />
       </Carousel>
     </div>
   );

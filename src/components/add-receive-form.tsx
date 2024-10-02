@@ -50,7 +50,7 @@ export function AddRecipeForm() {
 
       try {
         const response = await fetch(
-          `https://webhook.site/3c0b38e8-a544-4eea-9978-9d80d770fc76`,
+          `/api/send-post`,
           {
             method: "POST",
             headers: {

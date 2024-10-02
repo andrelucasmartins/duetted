@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { Menu } from "@/components/menu";
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
@@ -17,11 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body className={inter.className}>
         <Menu />
         {children}
         <Toaster />
+        <Footer />
       </body>
     </html>
   );
