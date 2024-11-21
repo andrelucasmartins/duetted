@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaLock, FaShieldHalved, FaWhatsapp } from "react-icons/fa6";
+import { FaLock, FaShieldHalved } from "react-icons/fa6";
 
 // import { Modal } from "./modal";
 // import { ASSURANCE } from "@/data/assurance";
@@ -36,14 +36,15 @@ export function Footer(props: FooterProps) {
               <li>Política de Privacidade</li>
               <li>Termos e Condições</li>
               <li className="pt-2">
-                <Link href="https://pedidos.capsulbrasil.com.br/tracking">
                   <Button
                     className="text-xs bg-red-600 hover:bg-red-700  px-6"
                     size="sm"
+                    asChild
                   >
+                <Link href="https://pedidos.capsulbrasil.com.br/tracking">
                     RASTREAR PEDIDO
-                  </Button>
                 </Link>
+                  </Button>
               </li>
             </ul>
             {/* <ul className="text-gray-100 font-medium">
@@ -145,14 +146,6 @@ export function Footer(props: FooterProps) {
           direitos reservados.
         </span>
       </div>
-      <Link
-        type="button"
-        className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-full text-sm p-4 text-center  mb-2 fixed bottom-2 right-6"
-        href="https://api.whatsapp.com/send?phone=5519993028888&text=Olá, sou André, gostaria de saber mais sobre o Lift Detox Black?"
-      >
-        <span className="sr-only">Whatsapp</span>
-        <FaWhatsapp size={30} />
-      </Link>
     </footer>
   );
 }
