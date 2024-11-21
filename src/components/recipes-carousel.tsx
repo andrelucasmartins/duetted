@@ -14,7 +14,7 @@ export const RecipeCarousel = ({ ...props }: RecipeCarouselProps) => {
   return (
     <div {...props} className="mx-6 md:mx-0">
       <Carousel
-        className="w-full max-w-full my-8 "
+        className="w-full max-w-full"
         plugins={[plugin.current]}
         opts={{
           loop: true,
