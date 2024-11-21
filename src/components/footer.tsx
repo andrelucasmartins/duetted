@@ -117,7 +117,6 @@ export function Footer(props: FooterProps) {
                 <ul>
                   <li className="mb-2">
                     <button
-                      type="button"
                       className="bg-gray-100 text-gray-600 px-6 py-2 uppercase text-sm flex justify-center items-center gap-2 "
                     >
                       <FaLock />
@@ -126,7 +125,6 @@ export function Footer(props: FooterProps) {
                   </li>
                   <li>
                     <button
-                      type="button"
                       className="bg-gray-100 text-gray-600 px-8 py-2 uppercase text-base flex justify-center items-center gap-2 "
                     >
                       <FaShieldHalved />
