@@ -19,7 +19,7 @@ export default function Home() {
       <div className="container mx-auto px-4 pb-8">
       <article className="max-w-4xl mx-auto">
         <header className="mb-8">
-          <h1 className="text-3xl font-bold mb-4">Doce fácil de Beijinho de Coco</h1>
+          <h2 className="text-3xl font-bold mb-4">Doce fácil de Beijinho de Coco</h2>
           <div className="flex items-center gap-4 text-gray-600">
             <div className="flex items-center">
               <span className="flex flex-row gap-2"><Clock className="text-primary" /> Preparo: 30 min</span>
