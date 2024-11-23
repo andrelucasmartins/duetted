@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   description: "Aqui você encontra tudo sobre bolo, salgados, doces e receitas.",
   keywords: ["doces", "salgados", "receitas", "bolos"],
   authors: [{ name: 'André Ezequiel', url: 'https://github.com/andre-ezequiel' }],
+  
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
@@ -35,6 +36,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true
+  },
+  other: {
+    "next-size-adjust": "",
   }
 };
 
@@ -45,9 +49,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <head>
-         <meta name="next-size-adjust" content="100%" />
-      </head>
       <body className={inter.className}>
         <Menu />
         {children}
