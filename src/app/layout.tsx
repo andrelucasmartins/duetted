@@ -8,19 +8,29 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Só Delicia",
+  title: {
+    default: 'Duetted - O melhor do sabor',
+    template: '%s | Duetted receitas',
+  },
   description: "Aqui você encontra tudo sobre bolo, salgados, doces e receitas.",
   keywords: ["doces", "salgados", "receitas", "bolos"],
   authors: [{ name: 'André Ezequiel', url: 'https://github.com/andre-ezequiel' }],
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+    
 
-  viewport: 'width=device-width, initial-scale=1',
-
+  },
+  verification: {
+    google: 'your-google-site-verification',
+  },
   openGraph: {
     title: 'Duetted recipes App',
     description: 'Aqui você encontra tudo sobre doces e salgados e receitas...',
     type: 'website',
     locale: 'pt_BR',
-    siteName: 'Toast App'
+    siteName: 'Duetted recipes App',
+    url: 'https://duetted.vercel.app/',
   },
   robots: {
     index: true,
@@ -35,6 +45,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
+      <head>
+         <meta name="next-size-adjust" content="100%" />
+      </head>
       <body className={inter.className}>
         <Menu />
         {children}
