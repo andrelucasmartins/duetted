@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     follow: true
   },
   other: {
-    "next-size-adjust": "",
+    "next-size-adjust": " ",
   }
 };
 
