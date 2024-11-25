@@ -2,7 +2,7 @@ export const MENU_MAIN = [
   {
     id: 1,
     name: "sobre",
-    href: "#sobre",
+    href: "/sobre",
   },
   {
     id: 2,

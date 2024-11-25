@@ -1,4 +1,10 @@
+import { Metadata } from "next";
+
 interface DocesProps {
+}
+
+export const metadata: Metadata = {
+  title: 'Doces',
 }
 
 export default function Doces({...props }: DocesProps){

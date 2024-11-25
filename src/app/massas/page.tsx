@@ -1,4 +1,10 @@
+import { Metadata } from "next";
+
 interface MassasProps {}
+
+export const metadata: Metadata = {
+  title: 'Massas',
+}
 
 export default function Massas({ ...props }: MassasProps) {
   return (

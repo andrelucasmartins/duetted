@@ -1,4 +1,4 @@
-import { AddRecipeForm } from "@/components/add-receive-form";
+import { RecipeForm } from "@/components/recipe-form";
 
 
 interface DashboardProps {}
@@ -12,7 +12,7 @@ export default function Dashboard({ ...props }: DashboardProps) {
         </div>
       </div>
       <div className="flex flex-col mx-auto max-w-screen-xl">
-        <AddRecipeForm />
+        <RecipeForm />
       </div>
     </section>
   );

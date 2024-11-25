@@ -1,9 +1,14 @@
 import { Clock, UsersIcon } from "lucide-react"
+import { Metadata } from "next"
 
 interface RecipePageProps {
   params: {
     id: string
   }
+}
+
+export const metadata: Metadata = {
+  title: 'Receita',
 }
 
 export default function RecipePage({ params }: RecipePageProps) {

@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/sheet";
 import { MENU_MAIN } from "@/data/menu";
 import { MenuSquareIcon } from "lucide-react";
+import Image from 'next/image';
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { Button } from "./ui/button";
@@ -25,7 +26,7 @@ export const Menu = ({ ...props}: MenuProps) => {
        justify-between items-center uppercase mx-auto max-w-screen-xl px-4 md:px-0"
      >
        <Link href="/">
-         <h1 className="text-2xl text-white">Só Delicia</h1>
+         <Image src="/duetted_logo_transparent_white.png" alt="Duetted" width={300} height={300} />
        </Link>
        <nav className="hidden md:block">
          <ul className="flex justify-start items-center gap-4 flex-row">
@@ -64,7 +65,7 @@ export const Menu = ({ ...props}: MenuProps) => {
            </SheetTrigger>
            <SheetContent className="p-0">
              <SheetHeader className="p-4 flex justify-start ">
-               <SheetTitle>Só Delicia</SheetTitle>
+               <SheetTitle>Duetted</SheetTitle>
                <SheetDescription>
                  <ul className="flex justify-start items-start gap-4 flex-col">
                    {MENU_MAIN.map((item) => (

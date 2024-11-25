@@ -26,7 +26,7 @@ export default function Home() {
             </div>
             <div className="flex items-center">
               <span className="flex flex-row gap-2"> <UsersIcon className="text-primary"/> Rendimento: 8 porções</span>
-            </div>
+            </div>''
           </div>
         </header>
 

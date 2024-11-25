@@ -20,7 +20,7 @@ export function Footer(props: FooterProps) {
         <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-8 items-start">
           <div className="flex justify-center items-center ">
             <Image
-              src="/images/logos/logotipo-lift-detox-black-1-300x300.webp"
+              src="/duetted_logo-2.png"
               alt="Só Delicia"
               width={300}
               height={300}
