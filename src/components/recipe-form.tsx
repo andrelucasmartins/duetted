@@ -45,7 +45,7 @@ const formSchema = z.object({
   time: z.string().min(1, {
     message: "O tempo de preparo deve ter pelo menos 1 caracteres.",
   }),
-  recipe_yield: z.number().positive().gte(1, {
+  recipe_yield: z.string().min(1, {
     message: "A receita rende para quantas pessoas?",
   }),
 
@@ -75,7 +75,7 @@ export function RecipeForm() {
      defaultValues: {
         title: "",
         time: "",
-        recipe_yield: 0,
+        recipe_yield: "",
         ingredients: "",
         preparation_method: "",
         tips: "",
@@ -117,7 +117,7 @@ export function RecipeForm() {
       form.reset({
         title: "",
         time: "",
-        recipe_yield: 0,
+        recipe_yield: "",
         ingredients: "",
         preparation_method: "",
         tips: "",
@@ -165,7 +165,7 @@ export function RecipeForm() {
       <Form {...form}>     
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-8 max-w-screen-sm w-full mx-auto flex flex-col justify-start my-16 px-4 md:px-0"
+          className="space-y-8"
         >
           <div className="flex justify-start items-center gap-4 flex-col ">
             <FormField
@@ -181,6 +181,8 @@ export function RecipeForm() {
                 </FormItem>
               )}
             />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+
             <FormField
               control={form.control}
               name="time"
@@ -188,7 +190,7 @@ export function RecipeForm() {
                 <FormItem className="w-full">
                   <FormLabel>Tempo de preparo</FormLabel>
                   <FormControl>
-                    <Input placeholder="30" {...field} min="0" step={"5"} type="number" />
+                    <Input placeholder="30" {...field} step={"5"} type="number" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -215,15 +217,15 @@ export function RecipeForm() {
                   <FormControl>
                     <Select 
                     onValueChange={field.onChange}
-                    defaultValue={field.value.toString()}
+                    defaultValue={field.value}
                     {...field}>
-                      <SelectTrigger className="w-[180px]">
+                      <SelectTrigger className="w-full">
                         <SelectValue placeholder="Selecione uma categoria" />
                       </SelectTrigger>
                       <SelectContent>
                         {
                           CATEGORIES.map((category) => (
-                            <SelectItem key={category.id} value={String(category.id)}>
+                            <SelectItem key={category.id} value={category.id.toString()}>
                               {category.name}
                             </SelectItem>
                           ))
@@ -235,6 +237,7 @@ export function RecipeForm() {
                 </FormItem>
               )}          />
             
+            </div>
             <FormField
               control={form.control}
               name="ingredients"
@@ -316,7 +319,9 @@ export function RecipeForm() {
                       <TableCell>
                         <Badge variant="outline" className="uppercase">{recipe.title}</Badge>
                       </TableCell>
-                      <TableCell className="text-right space-x-2">
+                      <TableCell className="text-right">
+                        <div className="gap-2 flex flex-row justify-end">
+
                         <Button variant="outline" size="icon" onClick={() => handleEdit(recipe.id)} title="Editar">
                           <Edit className="size-4"/>
                         </Button>
@@ -340,6 +345,7 @@ export function RecipeForm() {
                             </AlertDialogFooter>
                           </AlertDialogContent>
                         </AlertDialog>                       
+                        </div>
                       </TableCell>
                     </TableRow>
                   ))}

@@ -12,16 +12,21 @@ export const MENU_MAIN = [
   {
     id: 3,
     name: "doces",
-    href: "/doces",
+    href: "/receitas/doces",
   },
   {
     id: 4,
     name: "salgados",
-    href: "/salgados",
+    href: "/receitas/salgados",
   },
   {
     id: 5,
     name: "bolos",
-    href: "/bolos",
+    href: "/receitas/bolos",
+  },
+  {
+    id: 6,
+    name: "cozidos",
+    href: "/receitas/cozidos",
   }
 ]

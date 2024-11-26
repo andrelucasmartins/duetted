@@ -22,11 +22,11 @@ export const Menu = ({ ...props}: MenuProps) => {
  return (
    <div className="bg-primary px-4" {...props}>
      <div
-       className="py-6 text-lg flex 
+       className="py-4 text-lg flex 
        justify-between items-center uppercase mx-auto max-w-screen-xl px-4 md:px-0"
      >
        <Link href="/">
-         <Image src="/duetted_logo_transparent_white.png" alt="Duetted" width={300} height={300} />
+         <Image src="/duetted_logo_transparent_white.png" alt="Duetted" width={300} height={300} priority/>
        </Link>
        <nav className="hidden md:block">
          <ul className="flex justify-start items-center gap-4 flex-row">
@@ -64,8 +64,10 @@ export const Menu = ({ ...props}: MenuProps) => {
              <MenuSquareIcon className="size-8 text-white" />
            </SheetTrigger>
            <SheetContent className="p-0">
-             <SheetHeader className="p-4 flex justify-start ">
-               <SheetTitle>Duetted</SheetTitle>
+             <SheetHeader className="p-4 flex justify-start">
+               <SheetTitle className="text-left">
+                <Image src="/duetted_logo_transparent.png" alt="Duetted" width={200} height={200} />
+               </SheetTitle>
                <SheetDescription>
                  <ul className="flex justify-start items-start gap-4 flex-col">
                    {MENU_MAIN.map((item) => (
@@ -78,7 +80,7 @@ export const Menu = ({ ...props}: MenuProps) => {
                        <Button
                          asChild
                          variant="outline"
-                         className="bg-primary "
+                        className="bg-primary text-white hover:text-black"
                        >
                          <Link href="/">Sair</Link>
                        </Button>

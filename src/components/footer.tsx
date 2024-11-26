@@ -3,6 +3,7 @@
 interface FooterProps {}
 
 import { Button } from "@/components/ui/button";
+import { MENU_MAIN } from "@/data/menu";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -32,17 +33,20 @@ export function Footer(props: FooterProps) {
               Links
             </h2>
             <ul className="text-gray-300 text-xs space-y-2">
-              <li>Perguntas frequentes</li>
-              <li>Política de Privacidade</li>
-              <li>Termos e Condições</li>
+
+              {
+                MENU_MAIN.map(menu => (
+                  <li key={menu.id}  className="uppercase"><Link href={menu.href}>{menu.name}</Link></li>
+                ))
+              }
               <li className="pt-2">
                   <Button
                     className="text-xs bg-red-600 hover:bg-red-700  px-6"
                     size="sm"
                     asChild
                   >
-                <Link href="https://pedidos.capsulbrasil.com.br/tracking">
-                    RASTREAR PEDIDO
+                <Link href="/dashboard">
+                    Entrar
                 </Link>
                   </Button>
               </li>
@@ -85,10 +89,10 @@ export function Footer(props: FooterProps) {
               Aviso
             </h2>
             <p className="text-gray-300 font-medium text-xs">
-              Não comercializamos o Lift Detox Black no Mercado Livre. A venda
-              só pode ser realizada através deste Site Oficial e não nos
-              responsabilizamos por compras realizadas em outros sites. Evite
-              falsificações e riscos a sua saúde.
+              Seja bem-vindo, de coração aberto,
+Aqui cada momento será mais que certo.
+Entre palavras e sonhos, vamos compartilhar,
+Um mundo de ideias pronto para explorar.
             </p>
           </div>
           <div className="flex flex-col justify-center sm:justify-start items-center sm:items-start">
@@ -137,6 +141,13 @@ export function Footer(props: FooterProps) {
           </div>
         </div>
       </div>
+      <p className="text-gray-300 font-medium text-xs mx-auto max-w-6xl mt-6">
+              Informamos que não nos responsabilizamos pelas receitas fornecidas por terceiros, sejam elas compartilhadas por meio deste site, redes sociais, ou quaisquer outros canais. A precisão, segurança e resultados das receitas podem variar conforme a origem e execução, estando fora do nosso controle.
+
+Recomendamos que você revise cuidadosamente os ingredientes e o modo de preparo antes de reproduzi-los, especialmente em casos de alergias ou restrições alimentares. Para dúvidas ou orientações, consulte um profissional especializado.
+
+Obrigado pela compreensão.
+            </p>
       <div className="px-4 flex items-center justify-center mx-auto max-w-6xl py-4">
         <span className="text-sm text-gray-50 dark:text-gray-300 text-center">
           © {new Date().getFullYear()}{" "}

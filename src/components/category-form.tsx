@@ -114,7 +114,9 @@ export function CategoryForm() {
          toast({ description: "Categoria criada com sucesso!"});
       }
       
-      form.reset();
+      form.reset({
+        name: "",
+      });
       setEditingId(null);
       loadCategories();
     } catch (error) {

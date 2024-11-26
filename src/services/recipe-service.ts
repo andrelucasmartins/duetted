@@ -17,6 +17,7 @@ export const recipeService = {
   getAll: async () => {
     const response = await fetch(API_URL, {
       headers,
+      cache: 'no-store',
     });
     return response.json();
   },
@@ -27,6 +28,26 @@ export const recipeService = {
     });
     return response.json();
   },
+
+  getGroupById: async (id: string) => {
+    const response = await fetch(`${API_URL}/category/${id}`, {
+      headers,
+    });
+    return response.json();
+  },
+
+  filterByRecipe: async (search?: string) => {
+    const response = await fetch(`${API_URL}/filter?${search}`, {
+      method: 'POST',
+      headers,
+      cache: 'no-store',
+      next: { tags: ['collection-filter'] }
+    })
+
+
+    return response.json()
+  },
+
 
   update: async (id: string, data: any) => {
     const response = await fetch(`${API_URL}/${id}`, {
