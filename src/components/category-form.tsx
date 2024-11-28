@@ -65,7 +65,7 @@ export function CategoryForm() {
 
   useEffect(() => {
       loadCategories();
-}, [loadCategories()]);
+}, []);
 
   const loadCategories = async () => {
     try {
