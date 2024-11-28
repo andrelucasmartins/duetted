@@ -64,7 +64,7 @@ const formSchema = z.object({
 
 export function RecipeForm() {
 
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState ([]);
   const [editingId, setEditingId] = useState<string | null>(null);
 
   const { toast } = useToast()
@@ -91,6 +91,7 @@ export function RecipeForm() {
     try {
       const data = await recipeService.getAll();
       setRecipes(data);
+
     } catch (error) {
       toast({
         variant: "destructive",
@@ -298,9 +299,7 @@ export function RecipeForm() {
     <div className="">
         <h2 className="text-2xl font-bold mb-4">Receitas</h2>
         {
-          recipes.length === 0 ? (
-            <p>Nenhuma receitas cadastrada.</p>
-          ) : (
+          recipes?.length > 0 ? (
             <Suspense fallback={<div>Carregando...</div>}>
               <Table className="border-2 rounded bg-secondary p-4">
                 <TableCaption>Uma lista de suas receitas recentes.</TableCaption>
@@ -313,7 +312,7 @@ export function RecipeForm() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {recipes.map((recipe:  { id: string; title: string }) => (
+                  {recipes?.map((recipe:  { id: string; title: string }) => (
                     <TableRow key={recipe.id}>
                       <TableCell className="font-medium">{recipe.id}</TableCell>
                       <TableCell>
@@ -352,7 +351,9 @@ export function RecipeForm() {
               </TableBody>
               </Table>
             </Suspense>
-          )
+          ):(
+            <p>Nenhuma receitas cadastrada.</p>
+          )          
         }
       </div>
     </div>

@@ -1,3 +1,4 @@
+
 const API_URL = 'http://localhost:8000/api/recipes';
 
 const headers = {
@@ -15,18 +16,28 @@ export const recipeService = {
   },
 
   getAll: async () => {
-    const response = await fetch(API_URL, {
-      headers,
-      cache: 'no-store',
-    });
-    return response.json();
+    try {
+      const response = await fetch(API_URL, {
+        headers,
+        cache: 'no-store',
+      });
+      return response.json();
+    } catch (error) {
+      console.error('Error fetching recipes:', error);
+      ;
+    }
+
   },
 
   getById: async (id: string) => {
-    const response = await fetch(`${API_URL}/${id}`, {
-      headers,
-    });
-    return response.json();
+    try {
+      const response = await fetch(`${API_URL}/${id}`, {
+        headers,
+      });
+      return response.json();
+    } catch (error) {
+      console.log(error)
+    }
   },
 
   getGroupById: async (id: string) => {
@@ -37,15 +48,20 @@ export const recipeService = {
   },
 
   filterByRecipe: async (search?: string) => {
-    const response = await fetch(`${API_URL}/filter?${search}`, {
-      method: 'POST',
-      headers,
-      cache: 'no-store',
-      next: { tags: ['collection-filter'] }
-    })
+    try {
+      const response = await fetch(`${API_URL}/filter?${search}`, {
+        method: 'POST',
+        headers,
+        cache: 'no-store',
+        next: { tags: ['collection-filter'] }
+      })
 
 
-    return response.json()
+      return response.json()
+    } catch (error) {
+      console.log(error)
+    }
+
   },
 
 

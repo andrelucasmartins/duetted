@@ -35,7 +35,7 @@ export const Menu = ({ ...props}: MenuProps) => {
                <Link href={item.href}>{item.name}</Link>
              </li>
            ))}
-           {pathname === "/dashboard" ? (
+           {pathname.startsWith("/dashboard") ? (
              <li>
                <Button
                  asChild

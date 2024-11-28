@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: { search: string } 
   let posts = await await recipeService.filterByRecipe(`category=${params.search}`)
  
   return {
-    title: posts.title,
+    title: posts?.title,
     category: params.search,
   }
 }
@@ -22,12 +22,12 @@ export default async function ReceitasSearchPage({ params  }: { params: { search
 
   return (
     <section className="px-4 py-6">
-      <div className="container mx-auto px-4 py-8 max-w-4xl min-h-lvh">
+      <div className="container mx-auto px-4 py-8 max-w-4xl min-h-[calc(100vh-20rem)]">
         <h1 className="mb-4 flex flex-row justify-between items-center"><span className="text-4xl font-bold capitalize">{params.search}</span> <GoBackButton variant={"link"} button>Voltar</GoBackButton> </h1>
           <Suspense fallback="loading...">
               {
-                posts.length > 0 ? 
-                posts.map((recipe: PostsData) => (
+                posts?.length > 0 ? 
+                posts?.map((recipe: PostsData) => (
       <article className="" key={recipe.id}>
               <header className="mb-4">
                 <Link href={`/receita/${recipe.id}`} title={recipe.title}>

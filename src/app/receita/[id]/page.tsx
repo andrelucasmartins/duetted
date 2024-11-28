@@ -1,7 +1,6 @@
 import GoBackButton from "@/components/go-back-button"
 import { recipeService } from "@/services/recipe-service"
 import { Clock, UsersIcon } from "lucide-react"
-import { Metadata } from "next"
 import { Suspense } from "react"
 
 interface RecipePageProps {
@@ -10,9 +9,18 @@ interface RecipePageProps {
   }
 }
 
-export const metadata: Metadata = {
-  title: 'Receita',
+const { getById } = recipeService
+
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  let post = await getById(params.id)
+
+  return {
+    title: post?.title,
+    category: 'recipes',
+  }
+  
 }
+
 
 export default async function RecipePage({ params }: RecipePageProps) {
   const post = await recipeService.getById(params.id)
@@ -21,11 +29,11 @@ export default async function RecipePage({ params }: RecipePageProps) {
     <main className="container mx-auto px-4 py-8">
 
            <Suspense fallback="loading...">
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto max-w-4xl px-4 py-8 min-h-[calc(100vh-20rem)]">
         {
            post ? 
 
-            <article className="max-w-4xl mx-auto">
+            <article>
                     <header className="mb-8">
                       <h1 className="text-3xl font-bold mb-4 flex flex-row justify-between items-center"><span className="text-4xl font-bold capitalize">{post.title}</span> <GoBackButton variant={"link"} button>Voltar</GoBackButton> </h1>
                       <div className="flex items-center gap-4 text-gray-600">
@@ -71,7 +79,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
         } 
         
       
-    </div>
+        </div>
       </Suspense>
     </main>
   )
