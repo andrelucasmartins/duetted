@@ -32,11 +32,14 @@ export default function Home() {
           </div>
         </header>
 
-        <img
+        <figure className='w-full relative h-96 mb-8'>
+        <Image
           src="/images/recipes/Danoninho-Caseiro.jpg"
           alt="Danoninho Caseiro"
-          className="w-full h-96 object-cover rounded-lg mb-8"
+          fill
+          className="w-full h-ful object-cover rounded-lg relative"
         />
+        </figure>
 
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-4">Ingredientes</h2>
@@ -95,16 +98,17 @@ export default function Home() {
               </div>
               <div className="flex items-center">
                 <span className="flex flex-row gap-2"> <UsersIcon className="text-primary"/> Rendimento: 8 porções</span>
-              </div>''
+              </div>
             </div>
           </header>
-
-          <img
+        <figure className='w-full relative h-96 mb-8'>
+          <Image
             src="/receita_beijinho-de-coco-receitas-nestle_1200_600.jpg"
             alt="Doce fácil de Beijinho de Coco"
-            className="w-full h-96 object-cover rounded-lg mb-8"
+            fill
+            className="w-full h-ful object-cover rounded-lg relative"
           />
-
+        </figure>
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Ingredientes</h2>
             <ul className="list-disc list-inside space-y-2">
