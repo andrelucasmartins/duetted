@@ -17,7 +17,7 @@ import { Button } from "./ui/button";
 interface MenuProps {
 }
 
-export const Menu = ({ ...props}: MenuProps) => {
+export const Menu = ({...props}: MenuProps) => {
   const pathname = usePathname()
  return (
    <div className="bg-primary px-4" {...props}>

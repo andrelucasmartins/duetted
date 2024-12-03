@@ -39,7 +39,7 @@ import {
 
 import { useToast } from "@/hooks/use-toast"
 import { categoryService } from "@/services/category-service"
-import { Suspense, useEffect, useState } from "react"
+import { Suspense, useCallback, useEffect, useState } from "react"
 import { Badge } from "./ui/badge"
 
 const formSchema = z.object({
@@ -63,11 +63,7 @@ export function CategoryForm() {
     },
   })
 
-  useEffect(() => {
-      loadCategories();
-}, []);
-
-  const loadCategories = async () => {
+  const loadCategories = useCallback(async () => {
     try {
       const data = await categoryService.getAll();
       setCategories(data);
@@ -77,7 +73,13 @@ export function CategoryForm() {
         description:"Erro ao carregar receitas"
       });
     }
-  };
+  }, [toast]);
+
+  useEffect(() => {
+      loadCategories();
+}, [loadCategories]);
+
+  
 
   const handleEdit = async (id: string) => {
     try {

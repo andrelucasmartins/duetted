@@ -34,7 +34,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 
 import { recipeService } from '@/services/recipe-service';
 import { Edit, Trash2 } from "lucide-react";
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useCallback, useEffect, useState } from 'react';
 import { Badge } from "./ui/badge";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "./ui/table";
 
@@ -83,11 +83,7 @@ export function RecipeForm() {
      },
    });
 
-    useEffect(() => {
-      loadRecipes();
-    }, []);
-
-  const loadRecipes = async () => {
+   const loadRecipes = useCallback(async () => {
     try {
       const data = await recipeService.getAll();
       setRecipes(data);
@@ -97,10 +93,12 @@ export function RecipeForm() {
         variant: "destructive",
         description: "Erro ao carregar receitas"});
     }
-  };
+  }, [toast]);
 
+    useEffect(() => {
+      loadRecipes();
+    }, [loadRecipes]);
 
-  
   async function onSubmit(values: z.infer<typeof formSchema>) {
 
     try {
